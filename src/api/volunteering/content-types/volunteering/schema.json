@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "volunteerings",
+  "info": {
+    "singularName": "volunteering",
+    "pluralName": "volunteerings",
+    "displayName": "Volunteering"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "slogan": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "paragraph": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "links": {
+      "type": "json"
+    }
+  }
+}

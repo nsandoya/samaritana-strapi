@@ -461,6 +461,41 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomeSectionHomeSection extends Struct.CollectionTypeSchema {
+  collectionName: 'home_sections';
+  info: {
+    displayName: 'HomeSection';
+    pluralName: 'home-sections';
+    singularName: 'home-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button: Schema.Attribute.JSON;
+    color: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direction: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-section.home-section'
+    > &
+      Schema.Attribute.Private;
+    paragraph: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
@@ -527,6 +562,42 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     visibility: Schema.Attribute.Boolean;
     wrote_at: Schema.Attribute.Date;
+  };
+}
+
+export interface ApiVolunteeringVolunteering
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'volunteerings';
+  info: {
+    displayName: 'Volunteering';
+    pluralName: 'volunteerings';
+    singularName: 'volunteering';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    links: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteering.volunteering'
+    > &
+      Schema.Attribute.Private;
+    paragraph: Schema.Attribute.Text;
+    path: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slogan: Schema.Attribute.String;
+    slug: Schema.Attribute.UID;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1042,8 +1113,10 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::book.book': ApiBookBook;
       'api::category.category': ApiCategoryCategory;
+      'api::home-section.home-section': ApiHomeSectionHomeSection;
       'api::post.post': ApiPostPost;
       'api::review.review': ApiReviewReview;
+      'api::volunteering.volunteering': ApiVolunteeringVolunteering;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
